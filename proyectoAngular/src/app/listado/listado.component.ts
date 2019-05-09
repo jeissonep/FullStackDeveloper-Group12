@@ -9,6 +9,7 @@ export class ListadoComponent implements OnInit {
 
   constructor() { }
 
+
   ngOnInit() {
   }
 
