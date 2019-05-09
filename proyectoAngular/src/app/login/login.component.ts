@@ -10,6 +10,7 @@ export class LoginComponent implements OnInit {
   usuario: string
   contrasena: string
   mostrar: boolean = true
+ 
 
   @Output() onLogin: EventEmitter<any> = new EventEmitter<any>()
 

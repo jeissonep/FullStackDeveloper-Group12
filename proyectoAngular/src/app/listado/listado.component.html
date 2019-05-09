@@ -1,4 +1,11 @@
-<p>
-  listado works!
-</p>
-<app-eliminar></app-eliminar>
+
+<div *ngIf="!mostrarL">
+  <li *ngFor="let item of usuarios">
+    {{item.username}} 
+  <br>
+    {{item.area}}
+    <app-eliminar (onEliminar)=($event)></app-eliminar>
+  </li>
+<br>
+<button type="button" class="btn btn-primary" (click)="Regresar()">Retornar</button>
+</div>

@@ -1,2 +1,2 @@
 <app-login *ngIf="mostrar" (onLogin)="mostrar=false"></app-login>
-<app-listado *ngIf="!mostrar"></app-listado>
+<app-listado *ngIf="!mostrar" (onRetornar)="mostrar=true"></app-listado>
