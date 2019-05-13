@@ -38,12 +38,12 @@ Eliminar(valor){
 }
 
 Modificar(valor){
-  //this.dataService.Editar(valor,"Picante de Cuy","Comida del Norte")
-  this.dataService.ListarReceta(valor)
-this.dataService.onListar.subscribe(
-  elementos => this.data = elementos
-)
-alert(this.data[0])
+  this.dataService.Editar(valor,"Picante de Cuy","Comida del Norte")
+//   this.dataService.ListarReceta(valor)
+// this.dataService.onListar.subscribe(
+//   elementos => this.data = elementos
+// )
+// alert(this.data[0])
 }
 
 
