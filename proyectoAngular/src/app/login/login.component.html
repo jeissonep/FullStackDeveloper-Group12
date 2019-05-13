@@ -14,15 +14,15 @@
   </form>
   <form class="col-6" *ngIf="!mostrar">
     <div class="form-group">
-      <input type="text" class="form-control" (input)="capturarUsuario($event.target.value)" placeholder="Usuario">
+      <input type="text" id="txtTitulo" class="form-control" (input)="capturarUsuario($event.target.value)" placeholder="Titulo">
     </div>
     <div class="form-group">
-      <input type="password" class="form-control" (input)="capturarContrasena($event.target.value)"
-        placeholder="Contraseña">
+      <input type="text" id="txtDescripcion" class="form-control" (input)="capturarContrasena($event.target.value)"
+        placeholder="Descripcion">
     </div>
     <div>
-      <button type="button" class="btn btn-primary" (click)="mostrar=!mostrar">Login</button>
-      <button type="button" class="btn btn-success" (click)="ingresar()">Registrar</button>
+      <button type="button" class="btn btn-primary" (click)="grabar()">Grabar</button>
+      <button type="button" class="btn btn-success" (click)="this.mostrar=!this.mostrar">Regresar</button>
     </div>
   </form>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { DataService } from '../servicios/data.service';
 
 @Component({
   selector: 'app-listado',
@@ -10,22 +11,40 @@ export class ListadoComponent implements OnInit {
   mostrar: boolean = true
   @Output() onRetornar: EventEmitter<any> = new EventEmitter<any>()
 
-  usuarios: Array<object> = [
-    { username: "usuario 1", area: "area 1" },
-    { username: "usuario 2", area: "area 2" },
-    { username: "usuario 3", area: "area 3" }
-  ]
 
-  constructor() { }
+  data: Array<{}>
+
+  constructor(private dataService: DataService) { }
 
 
   ngOnInit() {
+
+    this.data=this.dataService.Listar()
+    
+    this.dataService.onCambio.subscribe(  
+     elementos => this.data = elementos
+
+    )
+
   }
 
   Regresar() {
-    /* alert(this.usuario + " " + this.contrasena) */
+ 
     this.onRetornar.emit()
   }
+Eliminar(valor){
+
+  this.dataService.Eliminar(valor)
+}
+
+Modificar(valor){
+  //this.dataService.Editar(valor,"Picante de Cuy","Comida del Norte")
+  this.dataService.ListarReceta(valor)
+this.dataService.onListar.subscribe(
+  elementos => this.data = elementos
+)
+alert(this.data[0])
+}
 
 
 }
