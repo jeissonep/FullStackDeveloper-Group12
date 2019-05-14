@@ -44,19 +44,7 @@ Nuevo(tituloN:string,descripcionN:string):void{
   this.recetas.push({titulo:tituloN,descripcion:descripcionN})
   console.log("Se agrego correctamente con los dato: " + tituloN + " y " + descripcionN)
 }
-resultado:{}
 
-ListarReceta(tituloB:string):{}{
-
-const recetaL=this.Listar()
-this.resultado = recetaL.find(receta => receta.titulo === tituloB );
-console.log(this.resultado)
-return this.resultado
-
-this.onListar.emit(this.resultado)
-
-
-}
 
   constructor() { }
 }

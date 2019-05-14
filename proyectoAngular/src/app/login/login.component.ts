@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import {DataService} from '../servicios/data.service'
 @Component({
   selector: 'app-login',
@@ -14,6 +14,10 @@ export class LoginComponent implements OnInit {
  descripcion:string=""
 
   @Output() onLogin: EventEmitter<any> = new EventEmitter<any>()
+  @Output() onEditar:EventEmitter<any>=new EventEmitter<any>()
+
+  @Input() tituloV:string
+  @Input() descripcionV:string
 
   constructor(private DataService:DataService) { }
 
@@ -43,4 +47,8 @@ export class LoginComponent implements OnInit {
     this.onLogin.emit()
   }
 
+  regresar(){
+    this.mostrar=!this.mostrar
+   
+  }
 }

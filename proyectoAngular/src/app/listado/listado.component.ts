@@ -10,10 +10,10 @@ export class ListadoComponent implements OnInit {
 
   mostrar: boolean = true
   @Output() onRetornar: EventEmitter<any> = new EventEmitter<any>()
-
+  @Output() onEditar= new EventEmitter()
 
   data: Array<{}>
-
+  public datos: string
   constructor(private dataService: DataService) { }
 
 
@@ -38,13 +38,14 @@ Eliminar(valor){
 }
 
 Modificar(valor){
-  this.dataService.Editar(valor,"Picante de Cuy","Comida del Norte")
-//   this.dataService.ListarReceta(valor)
-// this.dataService.onListar.subscribe(
-//   elementos => this.data = elementos
-// )
-// alert(this.data[0])
+
+// valor["titulo"]="Lentejitas"
+// console.log(valor)
+console.log("enviando desde listado")
+this.onEditar.emit({datos:valor})
+this.onRetornar.emit()
 }
+
 
 
 }
