@@ -31,14 +31,6 @@ Eliminar(indice:number):void{
 
 }
 
-Editar(indice:number,tituloM:string,descripcionM:string):void{
-  this.recetas[indice]["titulo"]=tituloM
-  this.recetas[indice]["descripcion"]=descripcionM
-  this.onCambio.emit(this.recetas)
-  console.log("Se modificó correctamente con los dato: " + tituloM + " y " + descripcionM)
-  }
-
-
 Nuevo(tituloN:string,descripcionN:string):void{
   this.recetas.push({titulo:tituloN,descripcion:descripcionN})
   console.log("Se agrego correctamente con los dato: " + tituloN + " y " + descripcionN)

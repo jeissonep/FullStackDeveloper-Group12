@@ -37,6 +37,7 @@
 <button type="button" class="btn btn-primary" (click)="Regresar()">Retornar</button>
 </div>
 <br>
+<input type="file" (change)="changeListener($event)" #input />
 <hr>
 <div  *ngIf="!mostrarE">
     Actualizar Informacion
@@ -48,7 +49,7 @@
           <input type="text" class="form-control" [(ngModel)]="descripcionE" name="desc"  placeholder="Descripcion">
         </div>
         <div>
-          <button type="button" class="btn btn-primary" (click)="Editar(item)">Grabar</button>
+          <button type="button" class="btn btn-primary" (click)="Editar()">Grabar</button>
           <button type="button" style="margin: 10px" class="btn btn-outline-secondary" (click)="mostrarE=!mostrarE">Cancelar</button>
         </div>
       </form>
