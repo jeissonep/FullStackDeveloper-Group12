@@ -7,8 +7,8 @@ import {DataService} from '../servicios/data.service'
 })
 export class LoginComponent implements OnInit {
 
-  usuario: string
-  contrasena: string
+  usuario: string=""
+  contrasena: string=""
   mostrar: boolean = true
  titulo:string=""
  descripcion:string=""
@@ -39,12 +39,13 @@ export class LoginComponent implements OnInit {
   }
 
   grabar(){
-  //this.titulo=document.getElementById("txtTitulo").innerText
-   //this.descripcion = document.getElementById("txtDescripcion").innerText
 
-    this.DataService.Nuevo(this.usuario,this.contrasena)
-    
-    this.onLogin.emit()
+    if(this.usuario=="" || this.contrasena==""){
+    alert('Debe completar los datos antes de grabar')
+    }else{
+      this.DataService.Nuevo(this.usuario,this.contrasena)
+      this.onLogin.emit()
+    }     
   }
 
   regresar(){

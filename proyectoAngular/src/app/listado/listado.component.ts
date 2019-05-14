@@ -9,6 +9,9 @@ import { DataService } from '../servicios/data.service';
 export class ListadoComponent implements OnInit {
 
   mostrar: boolean = true
+  mostrarE:boolean=true
+  tituloE:string=""
+  descripcionE:string=""
   @Output() onRetornar: EventEmitter<any> = new EventEmitter<any>()
   @Output() onEditar= new EventEmitter()
 
@@ -36,14 +39,23 @@ Eliminar(valor){
 
   this.dataService.Eliminar(valor)
 }
-
+itemE=[]
 Modificar(valor){
+this.itemE=valor
+this.tituloE=this.itemE["titulo"]
+this.descripcionE=this.itemE["descripcion"]
+this.mostrarE=false
 
-// valor["titulo"]="Lentejitas"
-// console.log(valor)
 console.log("enviando desde listado")
-this.onEditar.emit({datos:valor})
-this.onRetornar.emit()
+
+
+}
+
+Editar(valor){
+
+this.itemE["titulo"]=this.tituloE
+this.itemE["descripcion"]=this.descripcionE
+this.mostrarE=true
 }
 
 

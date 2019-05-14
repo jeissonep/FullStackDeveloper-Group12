@@ -36,3 +36,20 @@
 <br>
 <button type="button" class="btn btn-primary" (click)="Regresar()">Retornar</button>
 </div>
+<br>
+<hr>
+<div  *ngIf="!mostrarE">
+    Actualizar Informacion
+    <form class="col-6" >
+        <div class="form-group">
+          <input type="text"  class="form-control" [(ngModel)]="tituloE" name="titulo" placeholder="Titulo">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" [(ngModel)]="descripcionE" name="desc"  placeholder="Descripcion">
+        </div>
+        <div>
+          <button type="button" class="btn btn-primary" (click)="Editar(item)">Grabar</button>
+          <button type="button" style="margin: 10px" class="btn btn-outline-secondary" (click)="mostrarE=!mostrarE">Cancelar</button>
+        </div>
+      </form>
+</div>

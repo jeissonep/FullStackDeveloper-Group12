@@ -6,9 +6,10 @@ import { Injectable, EventEmitter } from '@angular/core';
 export class DataService {
 
 onCambio:EventEmitter<Array<{}>>=new EventEmitter<Array<{}>>()
-onListar:EventEmitter<{}>=new EventEmitter<{}>()
+//onListar:EventEmitter<{}>=new EventEmitter<{}>()
 
 Lrecetas:Array<{}>
+
 
 private recetas:Array<{}> = [
   {titulo:"Arroz con Pato",descripcion:"Comida Norteña"},
@@ -39,8 +40,6 @@ Editar(indice:number,tituloM:string,descripcionM:string):void{
 
 
 Nuevo(tituloN:string,descripcionN:string):void{
-
-
   this.recetas.push({titulo:tituloN,descripcion:descripcionN})
   console.log("Se agrego correctamente con los dato: " + tituloN + " y " + descripcionN)
 }

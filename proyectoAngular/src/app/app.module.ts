@@ -5,16 +5,19 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ListadoComponent } from './listado/listado.component';
 import { EliminarComponent } from './eliminar/eliminar.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ListadoComponent,
-    EliminarComponent
+    EliminarComponent,
+    
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
