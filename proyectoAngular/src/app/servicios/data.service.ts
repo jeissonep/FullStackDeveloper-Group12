@@ -1,41 +1,36 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { IReceta } from '../modelos/receta.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-onCambio:EventEmitter<Array<{}>>=new EventEmitter<Array<{}>>()
-//onListar:EventEmitter<{}>=new EventEmitter<{}>()
+  onCambioData: EventEmitter<Array<{}>> = new EventEmitter<Array<{}>>()
 
-Lrecetas:Array<{}>
+private data:IReceta[]=[
 
-
-private recetas:Array<{}> = [
-  {titulo:"Arroz con Pato",descripcion:"Comida Norteña"},
-  {titulo:"Pachamanca",descripcion:"Comida del Centro"},
-  {titulo:"Rocoto Relleno",descripcion:"Comida del sur"},
-  {titulo:"Tacacho con cecina",descripcion:"Comida de la selva"}
+  { titulo: "Arroz con pato", descripcion: "plato tradicional norteño" },
+  { titulo: "Picante de cuy", descripcion: "plato típico de la sierra" },
+  { titulo: "Tacacho con cecina", descripcion: "plato típico de la selva" }
 ]
-
-Listar():Array<{}>{
-return this.recetas
-}
-
-Eliminar(indice:number):void{
-  if(confirm("¿Esta seguro que desea eliminar?")){
-    this.recetas.splice(indice,1)
-    console.log("Se elimino Correctamente")
-  }
-  this.onCambio.emit(this.recetas)
-
-}
-
-Nuevo(tituloN:string,descripcionN:string):void{
-  this.recetas.push({titulo:tituloN,descripcion:descripcionN})
-  console.log("Se agrego correctamente con los dato: " + tituloN + " y " + descripcionN)
-}
-
-
   constructor() { }
+
+  listar(): IReceta[]{
+    return this.data
+  }
+
+
+
+  eliminar(indice: number): void {
+    if (confirm("¿Está seguro?")) {
+      this.data.splice(indice, 1)
+    }
+    this.onCambioData.emit(this.data)
+  }
+
+  agregar(valor:IReceta){
+
+    this.data.push(valor)
+  }
 }

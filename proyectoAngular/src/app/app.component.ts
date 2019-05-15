@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IReceta } from './modelos/receta.interface';
 
 @Component({
   selector: 'app-root',
@@ -6,16 +7,14 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'proyectoAngular';
 
-  mostrar: boolean = true
-public titulo:string
-public descripcion:string
-
-  mostrarValor(event){
-
-    console.log(event.datos)
-  this.titulo=event.datos.titulo
-  this.descripcion=event.datos.descripcion
+  mostrar: number = 1
+  receta:IReceta
+  capturar(valor){
+    this.mostrar=valor[0]
+    this.receta=valor[1]
   }
+
 }

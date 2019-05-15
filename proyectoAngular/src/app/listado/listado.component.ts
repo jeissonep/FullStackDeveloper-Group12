@@ -1,5 +1,5 @@
-import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { DataService } from '../servicios/data.service';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-listado',
@@ -8,74 +8,28 @@ import { DataService } from '../servicios/data.service';
 })
 export class ListadoComponent implements OnInit {
 
-  mostrar: boolean = true
-  mostrarE:boolean=true
-  tituloE:string=""
-  descripcionE:string=""
-  public fileString;
-  @Output() onRetornar: EventEmitter<any> = new EventEmitter<any>()
-  @Output() onEditar= new EventEmitter()
-
   data: Array<{}>
-  public datos: string
-  constructor(private dataService: DataService) {
-    this.fileString
-   }
-
-   changeListener($event): void {
-    this.readThis($event.target);
-}
-
-readThis(inputValue: any): void {
-  var file: File = inputValue.files[0];
-  var myReader: FileReader = new FileReader();
-  var fileType = inputValue.parentElement.id;
-  myReader.onloadend = function (e) {
-
-      console.log(myReader.result);
-
-  }
-
-  myReader.readAsText(file);
-}
-  ngOnInit() {
-
-    this.data=this.dataService.Listar()
-    
-    this.dataService.onCambio.subscribe(  
-     elementos => this.data = elementos
-
-    )
-
-  }
-
-  Regresar() {
  
-    this.onRetornar.emit()
+
+@Output() onNuevo: EventEmitter<number>=new EventEmitter<number>()
+@Output() onEditar: EventEmitter<{}>=new EventEmitter<{}>()
+
+  constructor(private dataService: DataService) { }
+
+  ngOnInit() {
+    this.data = this.dataService.listar()
+
+    this.dataService.onCambioData
+      .subscribe(
+        elementos => this.data = elementos
+      )
   }
-Eliminar(valor){
 
-  this.dataService.Eliminar(valor)
-}
-itemE=[]
-Modificar(valor){
-this.itemE=valor
-this.tituloE=this.itemE["titulo"]
-this.descripcionE=this.itemE["descripcion"]
-this.mostrarE=false
-
-console.log("enviando desde listado")
-
-
-}
-
-Editar(){
-
-this.itemE["titulo"]=this.tituloE
-this.itemE["descripcion"]=this.descripcionE
-this.mostrarE=true
-}
-
-
+  nuevo(){
+this.onNuevo.emit(3)
+  }
+  editar(valor){
+    this.onEditar.emit([4,valor])
+  }
 
 }
