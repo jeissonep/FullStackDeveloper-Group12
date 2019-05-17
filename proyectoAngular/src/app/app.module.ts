@@ -5,9 +5,9 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ListadoComponent } from './listado/listado.component';
 import { RecetaComponent } from './receta/receta.component';
-import {FormsModule} from '@angular/forms';
-import { AgregarComponent } from './agregar/agregar.component';
-import { ModificarComponent } from './modificar/modificar.component'
+import { NuevoComponent } from './nuevo/nuevo.component';
+import { ModificarComponent } from './modificar/modificar.component';
+import { FormsModule } from "@angular/forms"
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { ModificarComponent } from './modificar/modificar.component'
     LoginComponent,
     ListadoComponent,
     RecetaComponent,
-    AgregarComponent,
+    NuevoComponent,
     ModificarComponent
   ],
   imports: [

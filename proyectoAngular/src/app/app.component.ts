@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { IReceta } from './modelos/receta.interface';
+import { Component } from '@angular/core';
+import { DataService } from './servicios/data.service';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +7,14 @@ import { IReceta } from './modelos/receta.interface';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
   title = 'proyectoAngular';
 
   mostrar: number = 1
-  receta:IReceta
-  capturar(valor){
-    this.mostrar=valor[0]
-    this.receta=valor[1]
-  }
 
+  constructor(private dataService:DataService){
+    this.dataService.onFinalizar.subscribe((valor)=>{
+      this.mostrar=valor
+      console.log(valor)
+    })
+  }
 }

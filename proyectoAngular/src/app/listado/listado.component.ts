@@ -1,5 +1,6 @@
 import { DataService } from '../servicios/data.service';
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { IReceta } from '../modelos/receta';
 
 @Component({
   selector: 'app-listado',
@@ -8,11 +9,8 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 })
 export class ListadoComponent implements OnInit {
 
-  data: Array<{}>
- 
-
-@Output() onNuevo: EventEmitter<number>=new EventEmitter<number>()
-@Output() onEditar: EventEmitter<{}>=new EventEmitter<{}>()
+  data: Array<IReceta>
+  @Output() onCambiarVista: EventEmitter<number> = new EventEmitter<number>()
 
   constructor(private dataService: DataService) { }
 
@@ -25,11 +23,12 @@ export class ListadoComponent implements OnInit {
       )
   }
 
-  nuevo(){
-this.onNuevo.emit(3)
+  nuevaReceta() {
+    this.onCambiarVista.emit(3)
   }
-  editar(valor){
-    this.onEditar.emit([4,valor])
+
+  finalizar(num) {
+    this.onCambiarVista.emit(num)
   }
 
 }

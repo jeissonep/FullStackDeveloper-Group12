@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { IReceta } from '../modelos/receta.interface';
+import { Component, OnInit } from '@angular/core';
+import { IReceta } from '../modelos/receta';
+import { DataService } from '../servicios/data.service';
 
 @Component({
   selector: 'app-modificar',
@@ -8,16 +9,22 @@ import { IReceta } from '../modelos/receta.interface';
 })
 export class ModificarComponent implements OnInit {
 
-  @Output() onModificar:EventEmitter<number>=new EventEmitter<number>()
-  @Input() receta:IReceta
+  receta: IReceta = { titulo: "", descripcion: "" }
 
-  constructor() { }
+  constructor(private dataService:DataService) {
+
+
+   }
 
   ngOnInit() {
+
+    this.dataService.subjet.subscribe((recetas:IReceta)=>{
+      this.receta=recetas
+    })
   }
 
-  modificar(){
-
-this.onModificar.emit(2)
+  guardar(){
+    this.dataService.onFinalizar.next(2)
   }
+
 }

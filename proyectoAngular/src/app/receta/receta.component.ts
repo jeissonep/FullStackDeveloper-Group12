@@ -1,5 +1,6 @@
 import { DataService } from '../servicios/data.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { IReceta } from '../modelos/receta';
 
 @Component({
   selector: 'app-receta',
@@ -8,9 +9,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class RecetaComponent implements OnInit {
 
-  @Input() receta: {}
+  @Input() receta: IReceta
   @Input() indice: number
-  @Output() onModificar:EventEmitter<{}>=new EventEmitter<{}>()
+
+  @Output() onFinalizar: EventEmitter<number> = new EventEmitter<number>()
 
   constructor(private dataService: DataService) { }
 
@@ -20,8 +22,13 @@ export class RecetaComponent implements OnInit {
   eliminar() {
     this.dataService.eliminar(this.indice)
   }
-  modificar(){
-    this.onModificar.emit(this.receta)
+
+  modificar() {
+   // this.onFinalizar.emit(4)}
+   setTimeout(()=>{
+    this.dataService.editar(this.indice,this.receta)
+   })
+   this.dataService.onFinalizar.next(4)
   }
 
 }
